@@ -1,72 +1,97 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-<title>Kies je weekend ❤️</title>
+<meta charset="UTF-8">
+<title>Cadeautjes 🎁</title>
 
 <style>
-
 body{
-text-align:center;
-font-family:Arial;
-background:#fff0f5;
-padding-top:60px;
+    font-family: Arial;
+    text-align:center;
+    background:#fff0f5;
+    padding-top:100px;
 }
 
+h1{
+    color:#e91e63;
+}
 
 button{
-
-display:block;
-margin:20px auto;
-padding:20px;
-width:250px;
-font-size:18px;
-border-radius:30px;
-border:none;
-background:#ff4081;
-color:white;
-
+    padding:15px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    margin:10px;
 }
 
+#ja{
+    background:#4caf50;
+    color:white;
+    position:absolute;
+}
+
+#nee{
+    background:#f44336;
+    color:white;
+}
 </style>
 
 </head>
 
-
 <body>
 
+<h1 id="vraag">Wil je een nieuwe kitten? 🐱</h1>
 
-<h1>Waar heb je zin in? 😍</h1>
-
-
-<button onclick="kies('Wandelweekend')">
-🌲 Wandelweekend
-</button>
-
-
-<button onclick="kies('Citytrip')">
-🏙️ Citytrip
-</button>
-
-
-<button onclick="kies('Zee')">
-🌊 Weekend aan zee
-</button>
-
-
+<button id="ja">JA</button>
+<button id="nee">NEE</button>
 
 <script>
 
-function kies(keuze){
+let stap = 0;
 
-alert("Mooie keuze: "+keuze+" ❤️");
+const vragen = [
+"Wil je een nieuwe kitten? 🐱",
+"Wil je bloemen? 💐",
+"Wil je een beter lief? 😏"
+];
 
+const jaBtn = document.getElementById("ja");
+const neeBtn = document.getElementById("nee");
+const vraag = document.getElementById("vraag");
+
+// JA knop ontsnapt
+jaBtn.addEventListener("mouseover", moveButton);
+jaBtn.addEventListener("click", moveButton);
+
+function moveButton(){
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+
+    jaBtn.style.left = x + "px";
+    jaBtn.style.top = y + "px";
+}
+
+// NEE = volgende vraag
+neeBtn.addEventListener("click", nextStep);
+
+function nextStep(){
+    stap++;
+
+    if(stap < vragen.length){
+        vraag.innerText = vragen[stap];
+    } else {
+        document.body.innerHTML = `
+            <h1>😏 Oké eerlijk...</h1>
+            <p>Je hebt alles afgewezen... maar ik heb toch iets voor je voorbereid ❤️</p>
+            <button onclick="window.location.href='keuze.html'">
+                Verder
+            </button>
+        `;
+    }
 }
 
 </script>
 
-
 </body>
-
 </html>
