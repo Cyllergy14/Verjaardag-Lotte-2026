@@ -178,99 +178,71 @@ FINALE SCHERM
 
 .final-screen{
 
-
 height:100vh;
 
 width:100%;
 
-
 background:#080808;
-
 
 display:flex;
 
 flex-direction:column;
 
-
 justify-content:center;
 
 align-items:center;
 
-
 color:white;
-
 
 animation:fadeIn 2s ease;
 
-
 overflow:hidden;
-
 
 }
 
 
+
+/* TYPEWRITER TEKST */
 
 #typing{
 
-
 font-size:32px;
-
 
 max-width:800px;
 
-
 text-align:center;
-
 
 z-index:2;
 
-
-color:white;
-
+color:#e91e63;   /* <-- zelfde stijl als je andere titels */
 
 }
 
 
+
+/* GIF */
 
 .firegif{
 
-
 width:300px;
-
 
 margin-top:40px;
 
-
 border-radius:20px;
-
 
 z-index:2;
 
-
 }
-
 
 
 
 /* fade */
 
-
 @keyframes fadeIn{
 
+from{ opacity:0; }
 
-from{
-
-opacity:0;
-
-}
-
-
-to{
-
-opacity:1;
-
-}
-
+to{ opacity:1; }
 
 }
 
@@ -278,491 +250,228 @@ opacity:1;
 
 /* vuur achtergrond */
 
-
 .fire{
 
-
 position:absolute;
-
 
 width:100%;
 
 height:100%;
 
-
 background:
 
-
 radial-gradient(circle at bottom,
-
 orange,
-
 transparent 40%),
 
-
-
 radial-gradient(circle at top,
-
 red,
-
 transparent 50%);
-
-
 
 opacity:0.6;
 
-
 animation:fireMove 3s infinite alternate;
 
-
 }
-
 
 
 
 @keyframes fireMove{
 
-
 from{
 
-
 transform:scale(1);
-
 filter:blur(5px);
 
-
 }
-
 
 to{
 
-
 transform:scale(1.2);
-
 filter:blur(20px);
 
-
 }
 
-
 }
-
-
 
 </style>
 
 </head>
 
-
-
 <body>
 
-
-
-<h1 id="vraag">
-Wil je een nieuwe kitten? 🐱
-</h1>
-
-
+<h1 id="vraag">Wil je een nieuwe kitten? 🐱</h1>
 
 <div id="fase1">
-
-<button id="ja">
-JA
-</button>
-
-
-<button id="nee1">
-NEE
-</button>
-
+<button id="ja">JA</button>
+<button id="nee1">NEE</button>
 </div>
-
-
-
-
 
 <div id="fase2" style="display:none;">
-
-
-<h1 id="vraag2">
-Wil je bloemen? 💐
-</h1>
-
-
-<button id="ja2">
-JA
-</button>
-
-
-<button id="nee2">
-NEE
-</button>
-
-
+<h1 id="vraag2">Wil je bloemen? 💐</h1>
+<button id="ja2">JA</button>
+<button id="nee2">NEE</button>
 </div>
-
-
-
-
 
 <div id="fase3" style="display:none;">
-
-
-<h1>
-Wil je een nieuw lief voor je verjaardag? 😏
-</h1>
-
-
-<button id="fase3ja">
-JA
-</button>
-
-
-<button id="fase3nee">
-NEE
-</button>
-
-
+<h1>Wil je een nieuw lief voor je verjaardag? 😏</h1>
+<button id="fase3ja">JA</button>
+<button id="fase3nee">NEE</button>
 </div>
-
-
-
-
 
 <!-- POPUP 1 -->
-
-
 <div class="popup" id="popup1">
-
-
 <div class="popup-content">
-
-
 <img src="fotoman1.jpg">
-
-
-<p>
-Weet je het zeker, schatje? 😏
-</p>
-
-
-<button id="p1ja">
-JA
-</button>
-
-
-<button id="p1nee">
-NEE
-</button>
-
-
+<p>Weet je het zeker, schatje? 😏</p>
+<button id="p1ja">JA</button>
+<button id="p1nee">NEE</button>
 </div>
-
-
 </div>
-
-
-
-
-
 
 <!-- POPUP 2 -->
-
-
 <div class="popup" id="popup2">
-
-
 <div class="popup-content">
-
-
 <img src="fotoman2.jpg">
-
-
-<p>
-Ben je echt zeker? 😌
-</p>
-
-
-<button id="p2ja">
-JA
-</button>
-
-
-<button id="p2nee">
-NEE
-</button>
-
-
+<p>Ben je echt zeker? 😌</p>
+<button id="p2ja">JA</button>
+<button id="p2nee">NEE</button>
 </div>
-
-
 </div>
-
-
-
-
-
-
 
 <script>
 
-
-
 /* FASE 1 */
-
-
 const ja=document.getElementById("ja");
 
 ja.onmouseover=()=>{
 
-
 ja.style.left=Math.random()*(window.innerWidth-120)+"px";
-
 ja.style.top=Math.random()*(window.innerHeight-120)+"px";
 
-
 };
 
 
-
+/* FASE 1 -> 2 */
 document.getElementById("nee1").onclick=()=>{
 
-
 fase1.style.display="none";
-
 vraag.style.display="none";
-
-
 fase2.style.display="block";
 
-
 };
-
-
-
 
 
 /* FASE 2 */
-
-
 let scale=1;
-
 
 ja2.onclick=()=>{
 
-
 scale-=0.1;
-
-
-if(scale<0.3)
-
-scale=0.3;
-
-
+if(scale<0.3) scale=0.3;
 
 ja2.style.transform=`scale(${scale})`;
-
 nee2.style.transform=`scale(${2-scale})`;
 
-
 };
 
 
-
+/* FASE 2 -> 3 */
 nee2.onclick=()=>{
 
-
 fase2.style.display="none";
-
 vraag2.style.display="none";
-
-
 fase3.style.display="block";
 
-
 };
-
-
-
-
 
 
 /* FASE 3 */
-
-
 fase3ja.onclick=()=>{
 
-
 fase3ja.style.display="none";
-
-
 fase3nee.style.position="fixed";
-
-
 fase3nee.style.left="50%";
-
-
 fase3nee.style.transform="translateX(-50%) scale(2)";
 
-
 };
-
-
-
-
-
-fase3nee.onclick=()=>{
-
-
-popup1.style.display="flex";
-
-
-};
-
-
-
-
-
 
 
 /* POPUP 1 */
+fase3nee.onclick=()=>{
 
+popup1.style.display="flex";
+
+};
 
 p1nee.onclick=(e)=>{
 
-
 e.target.classList.add("fall");
-
-
 p1ja.style.transform="scale(2)";
 
-
 };
-
-
 
 p1ja.onclick=()=>{
 
-
 popup1.style.display="none";
-
-
 popup2.style.display="flex";
-
 
 };
 
 
-
-
-
-
-
-
 /* POPUP 2 + FINALE */
-
-
 p2ja.onclick=()=>{
-
 
 document.body.innerHTML=`
 
-
-
 <div class="final-screen">
-
 
 <div class="fire"></div>
 
-
-
 <audio autoplay loop>
-
 <source src="music.mp3" type="audio/mpeg">
-
 </audio>
-
-
-
 
 <h1 id="typing"></h1>
 
-
-
 <img src="giffire.gif" class="firegif">
 
-
-
 </div>
-
-
 
 `;
 
 
-
-
-
+/* TYPEWRITER */
 let tekst="Inderdaad, er is maar 1 iemand die je in vuur en vlam zet ❤️";
-
-
 let i=0;
-
-
 
 function typeWriter(){
 
-
-
 if(i < tekst.length){
 
-
-
-typing.innerHTML += tekst.charAt(i);
-
-
+document.getElementById("typing").innerHTML += tekst.charAt(i);
 
 i++;
 
-
-setTimeout(typeWriter,80);
-
+setTimeout(typeWriter,15); /* 🔥 sneller gemaakt */
 
 }
 
-
-
 }
-
-
 
 typeWriter();
 
-
-
 };
-
-
 
 
 p2nee.onclick=(e)=>{
 
-
 e.target.classList.add("break");
-
-
 p2ja.style.transform="scale(2)";
-
 
 };
 
-
-
-
 </script>
-
-
 
 </body>
 </html>
