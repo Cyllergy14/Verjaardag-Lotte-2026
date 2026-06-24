@@ -31,17 +31,25 @@ button{
     max-width: 80%;
 }
 
-/* JA vlucht knop */
+/* JA */
 #ja{
     background:#4caf50;
     color:white;
-    position:absolute;
 }
 
 /* NEE */
 #nee1, #nee2{
     background:#f44336;
     color:white;
+}
+
+/* knop rij (FIX voor eerste fase) */
+.button-row{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:10px;
 }
 
 /* afbeeldingen */
@@ -51,7 +59,7 @@ img{
     border-radius: 20px;
 }
 
-.katfoto, .fotokat4{
+.katfoto, .fotokat4, .weekendfoto{
     width:220px;
     max-width:60vw;
     margin:15px 0;
@@ -95,16 +103,6 @@ to{
 }
 }
 
-.break{
-    animation:breakApart 0.8s forwards;
-}
-
-@keyframes breakApart{
-0%{transform:scale(1); opacity:1;}
-50%{transform:scale(0.5) rotate(10deg);}
-100%{transform:scale(0) rotate(360deg); opacity:0;}
-}
-
 /* GIF SCREEN */
 .gif-screen{
     height:100vh;
@@ -140,6 +138,13 @@ to{
     padding:20px;
 }
 
+.final-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
+
 .final-text{
     font-size:28px;
     color:#e91e63;
@@ -163,7 +168,7 @@ to{
         padding:12px 20px;
     }
 
-    .katfoto, .fotokat4{
+    .katfoto, .fotokat4, .weekendfoto{
         width:180px;
     }
 
@@ -184,10 +189,10 @@ to{
 
 <img src="fotokat4.jpg" class="fotokat4">
 
-<br>
-
-<button id="ja">JA</button>
-<button id="nee1">NEE</button>
+<div class="button-row">
+    <button id="ja">JA</button>
+    <button id="nee1">NEE</button>
+</div>
 
 </div>
 
@@ -315,14 +320,17 @@ document.body.innerHTML=`
 
 };
 
-/* NEXT BUTTON -> FINAL SCREEN */
+/* FINAL SCREEN */
 document.addEventListener("click", function(e){
 
 if(e.target && e.target.id==="nextBtn"){
 
 document.body.innerHTML=`
 <div class="final-screen">
-    <h1 class="final-text"></h1>
+    <div class="final-content">
+        <img src="fotoweekend1.jpg" class="weekendfoto">
+        <h1 class="final-text"></h1>
+    </div>
 </div>
 `;
 
