@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Verjaardag Game ❤️</title>
 
 <style>
@@ -11,7 +13,7 @@ body{
     text-align:center;
     background:#fff0f5;
     padding-top:80px;
-    overflow:hidden;
+    overflow-x:hidden;
 }
 
 h1{
@@ -26,6 +28,7 @@ button{
     border-radius:25px;
     margin:10px;
     transition:all 0.4s ease;
+    max-width: 80%;
 }
 
 /* JA vlucht knop */
@@ -39,6 +42,19 @@ button{
 #nee1, #nee2{
     background:#f44336;
     color:white;
+}
+
+/* afbeeldingen */
+img{
+    max-width: 80%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.katfoto, .fotokat4{
+    width:220px;
+    max-width:60vw;
+    margin:15px 0;
 }
 
 /* POPUPS */
@@ -89,10 +105,7 @@ to{
 100%{transform:scale(0) rotate(360deg); opacity:0;}
 }
 
-/* =====================
-GIF SCREEN (NIET DONKER MEER)
-===================== */
-
+/* GIF SCREEN */
 .gif-screen{
     height:100vh;
     width:100%;
@@ -100,6 +113,7 @@ GIF SCREEN (NIET DONKER MEER)
     display:flex;
     justify-content:center;
     align-items:center;
+    text-align:center;
 }
 
 .gif-content{
@@ -109,27 +123,12 @@ GIF SCREEN (NIET DONKER MEER)
     gap:20px;
 }
 
-/* knop */
-#nextBtn{
-    padding:15px 30px;
-    font-size:18px;
-    border:none;
-    border-radius:30px;
-    background:#e91e63;
-    color:white;
-    cursor:pointer;
-}
-
-/* GIF */
 .firegif{
-    width:300px;
+    width:250px;
     border-radius:20px;
 }
 
-/* =====================
-FINAL SCREEN (OOK ROZE)
-===================== */
-
+/* FINAL SCREEN */
 .final-screen{
     height:100vh;
     width:100%;
@@ -148,13 +147,38 @@ FINAL SCREEN (OOK ROZE)
     line-height:1.5;
 }
 
+/* RESPONSIVE */
+@media (max-width: 600px){
+
+    body{
+        padding-top:40px;
+    }
+
+    h1{
+        font-size:22px;
+    }
+
+    button{
+        font-size:16px;
+        padding:12px 20px;
+    }
+
+    .katfoto, .fotokat4{
+        width:180px;
+    }
+
+    .firegif{
+        width:200px;
+    }
+}
+
 </style>
 
 </head>
 
 <body>
 
-<h1 id="vraag">Wil je een nieuwe kitten??? 🐱</h1>
+<h1 id="vraag">Wil je een nieuwe kitten? 🐱</h1>
 
 <div id="fase1">
 
@@ -276,24 +300,17 @@ document.body.innerHTML=`
 
     <div class="gif-content">
 
-        <h1>
-            🔥 Je bent nu officieel in vuur en vlam ❤️
-        </h1>
+        <h1>🔥 Je bent nu officieel in vuur en vlam ❤️</h1>
 
         <img src="giffire.gif" class="firegif">
 
-        <p>
-            Nog één laatste stapje... 😏
-        </p>
+        <p>Nog één laatste stapje... 😏</p>
 
-        <button id="nextBtn">
-            VOLGENDE ➜
-        </button>
+        <button id="nextBtn">VOLGENDE ➜</button>
 
     </div>
 
 </div>
-`;
 `;
 
 };
